@@ -2,32 +2,44 @@ import logging
 import os, time, pandas as pd, re
 
 from datetime import datetime
+from airflow.providers.postgres.operators.postgres import PostgresOperator
+from airflow.providers.postgres.hooks.postgres import PostgresHook
 
-def extract_dim_time(db_conn):
-    dim_time = db_conn.query_df(
-        """
-        select
-		TO_CHAR(datum, 'yyyymmdd')::INT as time_key,
-		datum::date,
-		EXTRACT(DAY FROM datum) AS day_of_month,
-		TO_CHAR(DQ.datum, 'W')::INT AS week_of_month,
-		extract(month from datum) as month,
-		extract(year from datum) as year,
-		extract(quarter from datum) as quarter_of_year
-        from (
-            select (select min(order_date) from sales s)::DATE + SEQUENCE.DAY AS datum
-            from GENERATE_SERIES(0, 365*10) AS SEQUENCE (DAY)
-            group by SEQUENCE.day
-        ) as DQ
-        order by 1
-        """
-    )
-    return dim_time
+def extract_dim_time(db_object) -> pd.DataFrame:
+    try:
+        dimtime_sql = """
+            select
+            TO_CHAR(datum, 'yyyymmdd')::INT as time_key,
+            datum::date,
+            EXTRACT(DAY FROM datum) AS day_of_month,
+            TO_CHAR(DQ.datum, 'W')::INT AS week_of_month,
+            extract(month from datum) as month,
+            extract(year from datum) as year,
+            extract(quarter from datum) as quarter_of_year
+            from (
+                select (select min(order_date) from sales s)::DATE + SEQUENCE.DAY AS datum
+                from GENERATE_SERIES(0, 365*10) AS SEQUENCE (DAY)
+                group by SEQUENCE.day
+            ) as DQ
+            order by 1
+            """
+        dim_time = db_object.query(dimtime_sql)
+        dim_time['datum'] = dim_time['datum'].apply(pd.to_datetime)
+        dim_time[['day_of_month', 'week_of_month', 'month','year', 'quarter_of_year']] = dim_time[['day_of_month', 'week_of_month', 'month','year', 'quarter_of_year']].astype(int)
 
-def extract_dim_customer(db_conn, last_update=None):
+        return dim_time
+    
+    except TimeoutError as timeout_err:
+        print(f"{datetime.strftime(datetime.now(), format='%D %H:%M:%S')}: [TIMEOUT] {timeout_err}")
+    except Exception as error:
+        print(f"{datetime.strftime(datetime.now(), format='%D %H:%M:%S')}: [ERROR] {error}")
+
+    return None
+
+def extract_dim_customer(db_object, last_update=None) -> pd.DataFrame:
     try:
         if last_update == None:
-            dim_customer = db_conn.query_df(
+            dim_customer = db_object.query_df(
                 """
                 select c.customer_id as customer_key, c.name, c.segment, c.registered::date, c.sex, c.points
                 from customer c 
@@ -35,7 +47,7 @@ def extract_dim_customer(db_conn, last_update=None):
             )
             return dim_customer
         
-        return db_conn.query_df(
+        return db_object.query_df(
             f"""
                 select c.customer_id as customer_key, c.name, c.segment, c.registered::date, c.sex, c.points
                 from customer c 
@@ -50,10 +62,10 @@ def extract_dim_customer(db_conn, last_update=None):
 
     return None
 
-def extract_dim_product(db_conn, last_update=None):
+def extract_dim_product(db_object, last_update=None) -> pd.DataFrame:
     try:
         if last_update == None:
-            dim_customer = db_conn.query_df(
+            dim_customer = db_object.query_df(
                 """
                     select p.product_id as product_key, p.category, p.subcategory, p.product_name, ROUND(cast(avg(sp.ratings) as numeric), 2) as product_rating
                     from product p 
@@ -63,7 +75,7 @@ def extract_dim_product(db_conn, last_update=None):
             )
             return dim_customer
         
-        return db_conn.query_df(
+        return db_object.query_df(
             f"""
                 select p.product_id as product_key, p.category, p.subcategory, p.product_name, ROUND(cast(avg(sp.ratings) as numeric), 2) as product_rating
                 from product p 
@@ -80,9 +92,9 @@ def extract_dim_product(db_conn, last_update=None):
 
     return None
 
-def extract_dim_location(db_conn):
+def extract_dim_location(db_object) -> pd.DataFrame:
     try:
-        location_df = db_conn.query_df("""
+        location_df = db_object.query_df("""
             select l.location_id as location_key, country, city, state, postal_code, region
 	        from locations l 
         """)
@@ -94,9 +106,9 @@ def extract_dim_location(db_conn):
 
     return None
 
-def extract_fct_sales(db_conn):
+def extract_fct_sales(db_object):
     try:
-        fct_sales = db_conn.query_df(
+        fct_sales = db_object.query_df(
             """
                 with dim_time as (
                     select
@@ -140,9 +152,9 @@ def extract_fct_sales(db_conn):
 
     return None
 
-def extract_sales(db_conn):
+def extract_sales(db_object):
     try:
-        return db_conn.query_df(
+        return db_object.query_df(
             """
                 select * from sales;
             """
@@ -154,9 +166,9 @@ def extract_sales(db_conn):
 
     return
 
-def extract_sale_product(db_conn):
+def extract_sale_product(db_object):
     try:
-        return db_conn.query_df(
+        return db_object.query_df(
             """
                 select * from sale_product;
             """
@@ -168,9 +180,9 @@ def extract_sale_product(db_conn):
 
     return
 
-def extract_visits(db_conn):
+def extract_visits(db_object):
     try:
-        return db_conn.query_df("""
+        return db_object.query_df("""
             select customer_id as customer_key, count(customer_id) as visits
             from web_visit wv
             group by 1;
@@ -182,9 +194,9 @@ def extract_visits(db_conn):
     
     return None
 
-def extract_sales_with_product(db_conn):
+def extract_sales_with_product(db_object):
     try:
-        sales_df = db_conn.query_df(
+        sales_df = db_object.query_df(
             """
                 select s.customer_id as customer_key, s.ship_to as location_key, sp.product_id as product_key, sum(quantity) as quantity, sum(sp.subtotal) as sales
                 from sale_product sp 
@@ -200,9 +212,9 @@ def extract_sales_with_product(db_conn):
         print(f"{datetime.strftime(datetime.now(), format='%D %H:%M:%S')}: [ERROR] {error}")
     return None
 
-def extract_marketing(db_conn):
+def extract_marketing(db_object):
     try:
-        marketing_df = db_conn.query_df(
+        marketing_df = db_object.query_df(
             """
                 
             """
