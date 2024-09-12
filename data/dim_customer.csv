@@ -1,0 +1,794 @@
+,customer_key,name,segment,registered,sex,points
+0,1,Claire Gute,Consumer,2020-01-02,Male,1428
+1,2,Darrin Van Huff,Corporate,2020-01-04,Male,3175
+2,3,Sean O'Donnell,Consumer,2020-01-08,Female,1588
+3,4,Brosina Hoffman,Consumer,2020-01-09,Male,3786
+4,5,Andrew Allen,Consumer,2020-01-10,Female,513
+5,6,Irene Maddox,Consumer,2020-01-13,Female,910
+6,7,Harold Pawlan,Home Office,2020-01-15,Male,178
+7,8,Pete Kriz,Consumer,2020-01-15,Male,1830
+8,9,Alejandro Grove,Consumer,2020-01-17,Female,1076
+9,10,Zuschuss Donatelli,Consumer,2020-01-19,Male,631
+10,11,Ken Black,Corporate,2020-01-19,Male,1949
+11,12,Sandra Flanagan,Consumer,2020-01-19,Female,565
+12,13,Emily Burns,Consumer,2020-01-21,Female,539
+13,14,Eric Hoffmann,Consumer,2020-01-21,Female,3950
+14,15,Tracy Blumstein,Consumer,2020-01-22,Female,3370
+15,16,Matt Abelman,Home Office,2020-01-24,Male,817
+16,17,Gene Hale,Corporate,2020-02-02,Female,1971
+17,18,Steve Nguyen,Home Office,2020-02-02,Male,683
+18,19,Linda Cazamias,Corporate,2020-02-02,Male,811
+19,20,Ruben Ausman,Corporate,2020-02-02,Male,3489
+20,21,Erin Smith,Corporate,2020-02-03,Female,291
+21,22,Odella Nelson,Corporate,2020-02-06,Female,516
+22,23,Patrick O'Donnell,Consumer,2020-02-07,Male,785
+23,24,Lena Hernandez,Consumer,2020-02-08,Male,3533
+24,25,Darren Powers,Consumer,2020-02-11,Male,4499
+25,26,Janet Molinari,Corporate,2020-02-12,Female,516
+26,27,Ted Butterfield,Consumer,2020-02-13,Male,1617
+27,28,Kunst Miller,Consumer,2020-02-14,Male,597
+28,29,Paul Stevenson,Home Office,2020-02-14,Female,1457
+29,30,Brendan Sweed,Corporate,2020-02-17,Male,1157
+30,31,Karen Daniels,Consumer,2020-02-18,Male,1572
+31,32,Henry MacAllister,Consumer,2020-02-18,Male,1587
+32,33,Joel Eaton,Consumer,2020-02-20,Female,1420
+33,34,Ken Brennan,Corporate,2020-02-21,Female,1709
+34,35,Stewart Carmichael,Corporate,2020-02-22,Female,4058
+35,36,Duane Noonan,Consumer,2020-02-24,Female,4485
+36,37,Julie Creighton,Corporate,2020-02-24,Male,1162
+37,38,Christopher Schild,Home Office,2020-03-01,Male,1043
+38,39,Paul Gonzalez,Consumer,2020-03-01,Female,96
+39,40,Gary Mitchum,Home Office,2020-03-02,Male,836
+40,41,Jim Sink,Corporate,2020-03-04,Male,249
+41,42,Karl Braun,Consumer,2020-03-04,Female,1896
+42,43,Roger Barcio,Home Office,2020-03-05,Female,1300
+43,44,Parhena Norris,Home Office,2020-03-05,Female,1232
+44,45,Katherine Ducich,Consumer,2020-03-06,Female,966
+45,46,Elpida Rittenbach,Corporate,2020-03-08,Male,3957
+46,47,Rick Bensley,Home Office,2020-03-10,Female,1277
+47,48,Gary Zandusky,Consumer,2020-03-11,Male,1087
+48,49,Lena Cacioppo,Consumer,2020-03-12,Female,1300
+49,50,Janet Martin,Consumer,2020-03-13,Female,1879
+50,51,Pete Armstrong,Home Office,2020-03-13,Male,3373
+51,52,Cynthia Voltz,Corporate,2020-03-13,Male,1162
+52,53,Clay Ludtke,Consumer,2020-03-15,Male,1867
+53,54,Ryan Crowe,Consumer,2020-03-15,Male,567
+54,55,Dave Kipp,Consumer,2020-03-21,Male,3219
+55,56,Greg Guthrie,Corporate,2020-03-22,Male,280
+56,57,Steven Cartwright,Consumer,2020-03-23,Female,461
+57,58,Alan Dominguez,Home Office,2020-03-23,Male,1746
+58,59,Philip Fox,Consumer,2020-03-23,Male,1828
+59,60,Troy Staebel,Consumer,2020-04-01,Female,3873
+60,61,Lindsay Shagiari,Home Office,2020-04-02,Female,979
+61,62,Dorothy Wardle,Corporate,2020-04-04,Female,4121
+62,63,Lena Creighton,Consumer,2020-04-04,Female,1204
+63,64,Jonathan Doherty,Corporate,2020-04-04,Male,912
+64,65,Sally Hughsby,Corporate,2020-04-08,Female,1700
+65,66,Sandra Glassco,Consumer,2020-04-09,Male,1664
+66,67,Helen Andreada,Consumer,2020-04-10,Male,1463
+67,68,Maureen Gastineau,Home Office,2020-04-11,Female,858
+68,69,Justin Ellison,Corporate,2020-04-11,Female,1783
+69,70,Tamara Willingham,Home Office,2020-04-13,Female,1620
+70,71,Stephanie Phelps,Corporate,2020-04-13,Female,769
+71,72,Neil Knudson,Home Office,2020-04-15,Male,848
+72,73,Dave Brooks,Consumer,2020-04-16,Female,4375
+73,74,Nora Paige,Consumer,2020-04-17,Male,509
+74,75,Ted Trevino,Consumer,2020-04-17,Female,705
+75,76,Eric Murdock,Consumer,2020-04-18,Male,3885
+76,77,Ruben Dartt,Consumer,2020-04-19,Male,781
+77,78,Max Jones,Consumer,2020-04-19,Female,457
+78,79,Becky Martin,Consumer,2020-04-21,Male,327
+79,80,Chad Sievert,Consumer,2020-04-22,Female,1431
+80,81,Jennifer Braxton,Corporate,2020-05-02,Male,727
+81,82,Shirley Jackson,Consumer,2020-05-02,Male,406
+82,83,Jim Kriz,Home Office,2020-05-03,Female,985
+83,84,David Kendrick,Corporate,2020-05-03,Male,4599
+84,85,Robert Marley,Home Office,2020-05-04,Male,1495
+85,86,Sally Knutson,Consumer,2020-05-04,Female,443
+86,87,Frank Merwin,Home Office,2020-05-07,Male,1335
+87,88,Alice McCarthy,Corporate,2020-05-08,Male,939
+88,89,Mark Packer,Home Office,2020-05-09,Male,1528
+89,90,Mary Zewe,Corporate,2020-05-13,Female,1925
+90,91,Cassandra Brandow,Consumer,2020-05-15,Male,664
+91,92,Valerie Mitchum,Home Office,2020-05-16,Female,1349
+92,93,Fred Hopkins,Corporate,2020-05-17,Female,99
+93,94,Maria Bertelson,Consumer,2020-05-17,Male,78
+94,95,Bruce Stewart,Consumer,2020-05-17,Male,588
+95,96,Logan Currie,Consumer,2020-05-18,Male,4982
+96,97,Heather Kirkland,Corporate,2020-05-18,Female,4738
+97,98,Laurel Elliston,Consumer,2020-05-20,Female,4667
+98,99,Joseph Holt,Consumer,2020-05-21,Male,4536
+99,100,Michael Stewart,Corporate,2020-05-21,Male,1072
+100,101,Victoria Wilson,Corporate,2020-05-22,Male,758
+101,102,Jonathan Howell,Consumer,2020-06-01,Female,541
+102,103,Joni Blumstein,Consumer,2020-06-01,Female,1330
+103,104,David Smith,Corporate,2020-06-03,Male,1701
+104,105,Valerie Dominguez,Consumer,2020-06-04,Male,1927
+105,106,Erin Ashbrook,Corporate,2020-06-04,Female,1295
+106,107,David Bremer,Corporate,2020-06-04,Female,897
+107,108,Ken Lonsdale,Consumer,2020-06-06,Female,1237
+108,109,Dianna Wilson,Home Office,2020-06-07,Male,1643
+109,110,Logan Haushalter,Consumer,2020-06-07,Male,3660
+110,111,Kelly Collister,Consumer,2020-06-08,Male,48
+111,112,Delfina Latchford,Consumer,2020-06-09,Female,1774
+112,113,Dan Reichenbach,Corporate,2020-06-09,Male,1311
+113,114,Craig Carreira,Consumer,2020-06-11,Male,1243
+114,115,Dorris liebe,Corporate,2020-06-12,Male,215
+115,116,Sean Braxton,Corporate,2020-06-15,Male,106
+116,117,Roy Collins,Consumer,2020-06-16,Female,4225
+117,118,Alan Hwang,Consumer,2020-06-17,Male,371
+118,119,Claudia Bergmann,Corporate,2020-06-17,Male,4641
+119,120,Christine Abelman,Corporate,2020-06-22,Female,1658
+120,121,Kristen Hastings,Corporate,2020-07-01,Male,1464
+121,122,Barry Blumstein,Corporate,2020-07-01,Female,1573
+122,123,Andrew Gjertsen,Corporate,2020-07-03,Female,1896
+123,124,Jas O'Carroll,Consumer,2020-07-04,Female,1713
+124,125,Alan Haines,Corporate,2020-07-10,Male,141
+125,126,Nick Zandusky,Home Office,2020-07-10,Male,1257
+126,127,Kelly Lampkin,Corporate,2020-07-11,Female,1413
+127,128,Alan Schoenberger,Corporate,2020-07-14,Female,1225
+128,129,Corey Roper,Home Office,2020-07-16,Female,3590
+129,130,Shahid Hopkins,Consumer,2020-07-18,Female,1329
+130,131,Ben Peterman,Corporate,2020-07-23,Male,4711
+131,132,Thomas Seio,Corporate,2020-07-24,Female,1741
+132,133,Andy Gerbode,Corporate,2020-07-24,Female,123
+133,134,Sung Pak,Corporate,2020-08-02,Male,713
+134,135,Nathan Mautz,Home Office,2020-08-02,Male,1639
+135,136,Frank Atkinson,Corporate,2020-08-02,Male,599
+136,137,Grace Kelly,Corporate,2020-08-03,Female,4547
+137,138,Don Jones,Corporate,2020-08-04,Male,1984
+138,139,Patrick O'Brill,Consumer,2020-08-06,Female,953
+139,140,John Lucas,Consumer,2020-08-07,Female,1024
+140,141,Doug Bickford,Consumer,2020-08-07,Male,945
+141,142,Alyssa Crouse,Corporate,2020-08-07,Female,1771
+142,143,Clay Cheatham,Consumer,2020-08-08,Male,390
+143,144,Tamara Dahlen,Consumer,2020-08-08,Female,1229
+144,145,Adam Bellavance,Home Office,2020-08-10,Male,1905
+145,146,Jeremy Lonsdale,Consumer,2020-08-12,Female,1637
+146,147,Victoria Brennan,Corporate,2020-08-13,Male,63
+147,148,Katrina Willman,Consumer,2020-08-14,Male,1144
+148,149,Julia Dunbar,Consumer,2020-08-18,Female,1716
+149,150,Michael Kennedy,Corporate,2020-08-22,Male,85
+150,151,Guy Thornton,Consumer,2020-08-23,Female,3117
+151,152,Arthur Gainer,Consumer,2020-09-01,Female,3360
+152,153,Muhammed MacIntyre,Corporate,2020-09-05,Male,530
+153,154,Allen Rosenblatt,Corporate,2020-09-08,Female,1284
+154,155,Russell Applegate,Consumer,2020-09-09,Male,359
+155,156,Alejandro Savely,Corporate,2020-09-09,Female,4897
+156,157,Laura Armstrong,Corporate,2020-09-10,Male,237
+157,158,Denny Ordway,Consumer,2020-09-12,Female,28
+158,159,Dean Katz,Corporate,2020-09-12,Male,906
+159,160,Nathan Gelder,Consumer,2020-09-13,Male,135
+160,161,Mike Vittorini,Consumer,2020-09-13,Female,1417
+161,162,Jack Garza,Consumer,2020-09-15,Male,3081
+162,163,Bart Pistole,Corporate,2020-09-16,Male,3517
+163,164,Victor Preis,Home Office,2020-09-19,Male,4081
+164,165,Saphhira Shifley,Corporate,2020-09-20,Male,932
+165,166,Anna Gayman,Consumer,2020-09-23,Female,918
+166,167,Luke Foster,Consumer,2020-09-24,Male,700
+167,168,Roy Französisch,Consumer,2020-09-24,Male,1132
+168,169,Keith Herrera,Consumer,2020-09-24,Female,3501
+169,170,Kimberly Carter,Corporate,2020-10-02,Male,283
+170,171,Caroline Jumper,Consumer,2020-10-02,Male,202
+171,172,Philip Brown,Consumer,2020-10-05,Female,123
+172,173,Michael Paige,Corporate,2020-10-05,Female,1589
+173,174,Natalie Fritzler,Consumer,2020-10-08,Male,341
+174,175,Shirley Daniels,Home Office,2020-10-11,Female,3512
+175,176,Ken Heidel,Corporate,2020-10-12,Male,157
+176,177,Ross Baird,Home Office,2020-10-13,Male,912
+177,178,Mike Kennedy,Consumer,2020-10-14,Male,1145
+178,179,Philisse Overcash,Home Office,2020-10-15,Female,1948
+179,180,Brenda Bowman,Corporate,2020-10-15,Male,1045
+180,181,Troy Blackwell,Consumer,2020-10-16,Male,244
+181,182,Raymond Buch,Consumer,2020-10-19,Male,1066
+182,183,Ed Braxton,Corporate,2020-10-19,Male,3454
+183,184,Sanjit Chand,Consumer,2020-10-19,Male,652
+184,185,Tanja Norvell,Home Office,2020-10-21,Female,252
+185,186,Joni Sundaresam,Home Office,2020-10-24,Female,1587
+186,187,Maya Herman,Corporate,2020-11-03,Male,330
+187,188,Jeremy Pistek,Consumer,2020-11-03,Female,901
+188,189,Jeremy Ellison,Consumer,2020-11-04,Male,1200
+189,190,John Grady,Corporate,2020-11-05,Female,236
+190,191,Xylona Preis,Consumer,2020-11-06,Male,281
+191,192,Erin Mull,Consumer,2020-11-07,Male,242
+192,193,Michelle Tran,Home Office,2020-11-08,Female,4663
+193,194,Sue Ann Reed,Consumer,2020-11-10,Male,1847
+194,195,Carl Weiss,Home Office,2020-11-11,Male,1952
+195,196,Astrea Jones,Consumer,2020-11-13,Male,3534
+196,197,Sonia Sunley,Consumer,2020-11-20,Male,35
+197,198,Rose O'Brian,Consumer,2020-11-20,Male,820
+198,199,Maribeth Dona,Consumer,2020-11-21,Female,4498
+199,200,Maribeth Yedwab,Corporate,2020-11-24,Male,1261
+200,201,Christopher Martinez,Consumer,2020-12-04,Female,918
+201,202,Lynn Smith,Consumer,2020-12-04,Female,1449
+202,203,Bradley Nguyen,Consumer,2020-12-05,Male,659
+203,204,Dean Braden,Consumer,2020-12-08,Male,379
+204,205,Matt Connell,Corporate,2020-12-12,Male,1693
+205,206,Brian Dahlen,Consumer,2020-12-14,Female,951
+206,207,Patricia Hirasaki,Home Office,2020-12-14,Female,1750
+207,208,Mike Gockenbach,Consumer,2020-12-16,Male,735
+208,209,Karen Bern,Corporate,2020-12-16,Female,932
+209,210,Jasper Cacioppo,Consumer,2020-12-19,Female,1542
+210,211,Rob Lucas,Consumer,2020-12-19,Female,778
+211,212,Allen Armold,Consumer,2020-12-19,Male,1718
+212,213,Emily Phan,Consumer,2020-12-20,Male,170
+213,214,Darren Koutras,Consumer,2020-12-21,Female,1632
+214,215,Bradley Drucker,Consumer,2020-12-21,Female,964
+215,216,Liz MacKendrick,Consumer,2020-12-24,Male,1625
+216,217,Adrian Shami,Home Office,2021-01-03,Male,438
+217,218,Bill Donatelli,Consumer,2021-01-06,Male,101
+218,219,Greg Tran,Consumer,2021-01-07,Female,4402
+219,220,Ashley Jarboe,Consumer,2021-01-08,Male,1971
+220,221,Olvera Toch,Consumer,2021-01-11,Male,225
+221,222,Liz Pelletier,Consumer,2021-01-11,Female,1125
+222,223,Cynthia Arntzen,Consumer,2021-01-13,Female,590
+223,224,Jeremy Farry,Consumer,2021-01-14,Male,407
+224,225,Frank Preis,Consumer,2021-01-15,Male,1440
+225,226,Ellis Ballard,Corporate,2021-01-17,Male,3175
+226,227,Jennifer Ferguson,Consumer,2021-01-19,Female,3190
+227,228,Sarah Foster,Consumer,2021-01-22,Male,3697
+228,229,Trudy Glocke,Consumer,2021-01-22,Male,3258
+229,230,Carlos Soltero,Consumer,2021-02-02,Female,5
+230,231,Charles Crestani,Consumer,2021-02-03,Female,983
+231,232,Dianna Vittorini,Consumer,2021-02-03,Male,1347
+232,233,Bruce Degenhardt,Consumer,2021-02-03,Female,3996
+233,234,Zuschuss Carroll,Consumer,2021-02-04,Male,3367
+234,235,Melanie Seite,Consumer,2021-02-05,Female,1016
+235,236,Lena Radford,Consumer,2021-02-06,Female,1327
+236,237,Theone Pippenger,Consumer,2021-02-08,Female,1883
+237,238,Chloris Kastensmidt,Consumer,2021-02-10,Male,1638
+238,239,Alan Shonely,Consumer,2021-02-14,Female,1566
+239,240,Andrew Roberts,Consumer,2021-02-15,Male,1564
+240,241,Nona Balk,Corporate,2021-02-17,Male,1591
+241,242,Giulietta Dortch,Corporate,2021-02-18,Female,694
+242,243,Clytie Kelty,Consumer,2021-02-19,Male,1670
+243,244,Nat Gilpin,Corporate,2021-02-19,Female,4620
+244,245,Christina Anderson,Consumer,2021-02-20,Male,227
+245,246,Sylvia Foulston,Corporate,2021-02-21,Male,3560
+246,247,Meg O'Connel,Home Office,2021-02-22,Female,317
+247,248,Annie Thurman,Consumer,2021-02-22,Female,38
+248,249,Fred McMath,Consumer,2021-02-23,Female,1761
+249,250,Denny Joy,Corporate,2021-02-24,Male,4886
+250,251,Max Engle,Consumer,2021-02-24,Female,756
+251,252,Justin Deggeller,Corporate,2021-03-01,Female,944
+252,253,John Lee,Consumer,2021-03-07,Female,1850
+253,254,Sean Christensen,Consumer,2021-03-10,Female,1031
+254,255,Chuck Clark,Home Office,2021-03-10,Female,200
+255,256,Anthony Rawles,Corporate,2021-03-12,Male,3998
+256,257,Steven Roelle,Home Office,2021-03-12,Male,546
+257,258,Craig Reiter,Consumer,2021-03-19,Male,1204
+258,259,Eugene Hildebrand,Home Office,2021-03-20,Male,3639
+259,260,Sibella Parks,Corporate,2021-03-21,Female,986
+260,261,Tiffany House,Corporate,2021-04-01,Male,1685
+261,262,Resi Pölking,Consumer,2021-04-07,Male,3287
+262,263,Rob Beeghly,Consumer,2021-04-08,Female,3009
+263,264,Carol Darley,Consumer,2021-04-08,Male,4116
+264,265,Doug Jacobs,Consumer,2021-04-08,Female,407
+265,266,Grant Thornton,Corporate,2021-04-08,Female,389
+266,267,Michael Chen,Consumer,2021-04-08,Male,1389
+267,268,Ralph Arnett,Consumer,2021-04-09,Male,3550
+268,269,Naresj Patel,Consumer,2021-04-09,Female,590
+269,270,Alan Barnes,Consumer,2021-04-11,Female,966
+270,271,Jesus Ocampo,Home Office,2021-04-14,Male,371
+271,272,Jay Kimmel,Consumer,2021-04-15,Female,4564
+272,273,Brad Norvell,Corporate,2021-04-15,Female,3328
+273,274,David Philippe,Consumer,2021-04-16,Female,1069
+274,275,Tracy Hopkins,Home Office,2021-04-17,Female,382
+275,276,Arthur Prichep,Consumer,2021-04-20,Female,1224
+276,277,Roland Schwarz,Corporate,2021-05-01,Male,3388
+277,278,Seth Vernon,Consumer,2021-05-05,Female,470
+278,279,Christine Kargatis,Home Office,2021-05-05,Female,295
+279,280,Ross DeVincentis,Home Office,2021-05-06,Male,1022
+280,281,Mathew Reese,Home Office,2021-05-07,Female,1392
+281,282,Steve Chapman,Corporate,2021-05-08,Male,3385
+282,283,Jay Fein,Consumer,2021-05-10,Female,1328
+283,284,Emily Grady,Consumer,2021-05-10,Female,3248
+284,285,Darrin Sayre,Home Office,2021-05-10,Female,281
+285,286,Phillina Ober,Home Office,2021-05-11,Male,1179
+286,287,Sung Shariari,Consumer,2021-05-11,Female,4017
+287,288,Peter Bühler,Consumer,2021-05-14,Male,3141
+288,289,Roland Fjeld,Consumer,2021-05-16,Female,1978
+289,290,Yoseph Carroll,Corporate,2021-05-18,Male,1728
+290,291,Debra Catini,Consumer,2021-05-19,Female,1461
+291,292,Christine Phan,Corporate,2021-05-21,Female,307
+292,293,Barry Französisch,Corporate,2021-05-21,Male,4120
+293,294,Lisa Hazard,Consumer,2021-05-22,Male,1096
+294,295,Chris Selesnick,Corporate,2021-06-01,Female,1011
+295,296,Anthony Johnson,Corporate,2021-06-04,Female,1578
+296,297,Benjamin Venier,Corporate,2021-06-07,Male,1333
+297,298,Dan Lawera,Consumer,2021-06-08,Male,1014
+298,299,Bryan Mills,Consumer,2021-06-11,Female,220
+299,300,Liz Thompson,Consumer,2021-06-14,Female,1783
+300,301,Joe Kamberova,Consumer,2021-06-15,Male,4325
+301,302,Erica Smith,Consumer,2021-06-16,Male,3004
+302,303,Rick Hansen,Consumer,2021-06-18,Female,3312
+303,304,Carlos Daly,Consumer,2021-06-18,Male,420
+304,305,Helen Wasserman,Corporate,2021-06-20,Female,143
+305,306,Mike Caudle,Corporate,2021-07-03,Female,1236
+306,307,Gary McGarr,Consumer,2021-07-05,Female,404
+307,308,Pauline Johnson,Consumer,2021-07-06,Male,4598
+308,309,Bart Watters,Corporate,2021-07-08,Female,1389
+309,310,Toby Ritter,Consumer,2021-07-10,Female,1177
+310,311,Patrick Gardner,Consumer,2021-07-12,Female,4449
+311,312,James Lanier,Home Office,2021-07-13,Female,878
+312,313,Brian Moss,Corporate,2021-07-13,Female,1192
+313,314,Eudokia Martin,Corporate,2021-07-15,Male,993
+314,315,Art Foster,Consumer,2021-07-15,Male,66
+315,316,Guy Armstrong,Consumer,2021-07-16,Male,3255
+316,317,Cyma Kinney,Corporate,2021-07-18,Female,1932
+317,318,Dave Poirier,Corporate,2021-07-24,Female,4554
+318,319,Berenike Kampe,Consumer,2021-07-24,Male,1052
+319,320,Sanjit Jacobs,Home Office,2021-08-01,Female,1313
+320,321,Chuck Magee,Consumer,2021-08-01,Female,1749
+321,322,Anthony Jacobs,Corporate,2021-08-01,Female,3284
+322,323,Linda Southworth,Corporate,2021-08-04,Male,69
+323,324,Guy Phonely,Corporate,2021-08-10,Male,1075
+324,325,Paul Knutson,Home Office,2021-08-13,Female,1978
+325,326,Sally Matthias,Consumer,2021-08-13,Female,4726
+326,327,Anthony Garverick,Home Office,2021-08-15,Female,4588
+327,328,Peter McVee,Home Office,2021-08-17,Female,577
+328,329,Lauren Leatherbury,Consumer,2021-08-17,Male,805
+329,330,Jill Stevenson,Corporate,2021-08-20,Female,1374
+330,331,Ed Ludwig,Home Office,2021-08-22,Male,1302
+331,332,Pamela Coakley,Corporate,2021-08-22,Female,1075
+332,333,Hunter Lopez,Consumer,2021-08-23,Female,719
+333,334,Maribeth Schnelling,Consumer,2021-08-23,Male,166
+334,335,George Bell,Corporate,2021-09-02,Male,1398
+335,336,Justin Ritter,Corporate,2021-09-03,Male,695
+336,337,Bill Eplett,Home Office,2021-09-04,Male,1904
+337,338,Sample Company A,Home Office,2021-09-05,Male,26
+338,339,Rob Williams,Corporate,2021-09-05,Male,3274
+339,340,Sanjit Engle,Consumer,2021-09-10,Female,3642
+340,341,Adam Hart,Corporate,2021-09-11,Female,1308
+341,342,Jessica Myrick,Consumer,2021-09-11,Male,1832
+342,343,Joel Jenkins,Home Office,2021-09-13,Male,1589
+343,344,Ralph Kennedy,Consumer,2021-09-13,Male,1564
+344,345,Catherine Glotzbach,Home Office,2021-09-14,Male,902
+345,346,Rachel Payne,Corporate,2021-09-17,Male,1949
+346,347,Karen Carlisle,Corporate,2021-09-17,Male,91
+347,348,Katherine Hughes,Consumer,2021-09-17,Male,704
+348,349,Greg Hansen,Consumer,2021-09-19,Male,3778
+349,350,Scott Williamson,Consumer,2021-09-20,Female,956
+350,351,Joseph Airdo,Consumer,2021-09-21,Female,1771
+351,352,Daniel Lacy,Consumer,2021-09-22,Female,3098
+352,353,Lindsay Williams,Corporate,2021-09-22,Female,4197
+353,354,Thomas Brumley,Home Office,2021-09-24,Male,1531
+354,355,Bryan Spruell,Home Office,2021-10-04,Female,648
+355,356,Robert Waldorf,Consumer,2021-10-04,Male,833
+356,357,Tracy Zic,Consumer,2021-10-06,Male,85
+357,358,Ann Steele,Home Office,2021-10-07,Male,115
+358,359,Toby Swindell,Consumer,2021-10-09,Male,1704
+359,360,Sara Luxemburg,Home Office,2021-10-10,Male,833
+360,361,Mitch Willingham,Corporate,2021-10-10,Female,1388
+361,362,Rob Dowd,Consumer,2021-10-12,Female,2000
+362,363,Ryan Akin,Consumer,2021-10-17,Male,329
+363,364,Meg Tillman,Consumer,2021-10-17,Male,731
+364,365,Vivek Gonzalez,Consumer,2021-10-18,Female,1652
+365,366,John Stevenson,Consumer,2021-10-19,Male,476
+366,367,Kalyca Meade,Corporate,2021-10-20,Male,675
+367,368,Hallie Redmond,Home Office,2021-10-20,Male,1090
+368,369,Deanra Eno,Home Office,2021-10-21,Male,505
+369,370,Allen Goldenen,Consumer,2021-10-22,Female,102
+370,371,Jennifer Jackson,Consumer,2021-10-23,Female,44
+371,372,Jennifer Halladay,Consumer,2021-10-24,Male,1274
+372,373,Robert Dilbeck,Home Office,2021-11-06,Male,1158
+373,374,Mary O'Rourke,Consumer,2021-11-07,Female,731
+374,375,Noel Staavos,Corporate,2021-11-09,Male,1234
+375,376,Deirdre Greer,Corporate,2021-11-09,Male,238
+376,377,Nicole Fjeld,Home Office,2021-11-11,Female,184
+377,378,Matthew Grinstein,Home Office,2021-11-12,Female,863
+378,379,Theresa Swint,Corporate,2021-11-13,Male,1520
+379,380,Brian DeCherney,Consumer,2021-11-17,Female,233
+380,381,Charles McCrossin,Consumer,2021-11-18,Female,1861
+381,382,Skye Norling,Home Office,2021-11-19,Female,4992
+382,383,Erica Hernandez,Home Office,2021-11-23,Female,845
+383,384,Frank Olsen,Consumer,2021-11-24,Male,4791
+384,385,Maurice Satty,Consumer,2021-12-03,Female,3912
+385,386,Chad Cunningham,Home Office,2021-12-04,Male,4807
+386,387,Don Weiss,Consumer,2021-12-04,Female,175
+387,388,Bill Tyler,Corporate,2021-12-04,Female,1914
+388,389,Craig Yedwab,Corporate,2021-12-09,Female,237
+389,390,Brad Thomas,Home Office,2021-12-12,Male,4146
+390,391,Penelope Sewall,Home Office,2021-12-12,Male,4996
+391,392,Paul Van Hugh,Home Office,2021-12-13,Female,1554
+392,393,Neoma Murray,Consumer,2021-12-18,Female,4313
+393,394,Dionis Lloyd,Corporate,2021-12-18,Female,646
+394,395,Christine Sundaresam,Consumer,2021-12-21,Male,834
+395,396,Frank Hawley,Corporate,2021-12-23,Female,1133
+396,397,Nat Carroll,Consumer,2021-12-23,Male,1451
+397,398,Alex Avila,Consumer,2021-12-24,Female,78
+398,399,Larry Tron,Consumer,2021-12-24,Female,473
+399,400,Anne Pryor,Home Office,2021-12-24,Female,1056
+400,401,Paul MacIntyre,Consumer,2022-01-02,Male,1050
+401,402,Alyssa Tate,Home Office,2022-01-03,Male,510
+402,403,Cathy Armstrong,Home Office,2022-01-04,Female,461
+403,404,Harold Ryan,Corporate,2022-01-06,Female,1794
+404,405,Bradley Talbott,Home Office,2022-01-09,Female,1656
+405,406,Larry Hughes,Consumer,2022-01-09,Male,954
+406,407,Steven Ward,Corporate,2022-01-09,Male,4464
+407,408,Stefania Perrino,Corporate,2022-01-10,Male,902
+408,409,Ben Ferrer,Home Office,2022-01-11,Female,1384
+409,410,Kean Thornton,Consumer,2022-01-11,Female,3878
+410,411,Brooke Gillingham,Corporate,2022-01-11,Male,1713
+411,412,Greg Matthias,Consumer,2022-01-11,Male,480
+412,413,Eva Jacobs,Consumer,2022-01-14,Male,71
+413,414,Nora Preis,Consumer,2022-01-14,Female,845
+414,415,Mick Hernandez,Home Office,2022-01-16,Male,504
+415,416,Jocasta Rupert,Consumer,2022-01-16,Male,210
+416,417,Suzanne McNair,Corporate,2022-01-17,Male,165
+417,418,Chris Cortes,Consumer,2022-01-19,Male,328
+418,419,Phillip Flathmann,Consumer,2022-01-19,Female,499
+419,420,Dan Campbell,Consumer,2022-01-20,Female,1206
+420,421,Bryan Davis,Consumer,2022-01-20,Male,1661
+421,422,Gene McClure,Consumer,2022-01-23,Male,1508
+422,423,Todd Boyes,Corporate,2022-01-24,Male,1696
+423,424,Justin Hirsh,Consumer,2022-02-01,Male,1902
+424,425,Erica Bern,Corporate,2022-02-02,Female,3568
+425,426,Quincy Jones,Corporate,2022-02-05,Female,716
+426,427,Tracy Collins,Home Office,2022-02-08,Male,747
+427,428,Chuck Sachs,Consumer,2022-02-09,Female,1069
+428,429,Henry Goldwyn,Corporate,2022-02-12,Male,400
+429,430,Laurel Workman,Corporate,2022-02-13,Male,753
+430,431,Matt Collins,Consumer,2022-02-13,Male,671
+431,432,Liz Preis,Consumer,2022-02-14,Male,1800
+432,433,Evan Bailliet,Consumer,2022-02-16,Male,1215
+433,434,George Zrebassa,Corporate,2022-02-18,Male,398
+434,435,Cathy Prescott,Corporate,2022-02-19,Female,4039
+435,436,Frank Gastineau,Home Office,2022-02-19,Male,614
+436,437,Lisa DeCherney,Consumer,2022-02-21,Male,1504
+437,438,Alejandro Ballentine,Home Office,2022-02-22,Female,228
+438,439,Michael Nguyen,Consumer,2022-02-23,Male,1573
+439,440,Jim Radford,Consumer,2022-03-02,Female,1420
+440,441,Jamie Frazer,Consumer,2022-03-02,Female,1081
+441,442,Chad McGuire,Consumer,2022-03-04,Female,257
+442,443,Aaron Smayling,Corporate,2022-03-06,Female,1394
+443,444,Beth Paige,Consumer,2022-03-07,Male,1706
+444,445,Natalie DeCherney,Consumer,2022-03-08,Male,1447
+445,446,Larry Blacks,Consumer,2022-03-11,Male,1958
+446,447,Kean Takahito,Consumer,2022-03-11,Female,3548
+447,448,Harry Marie,Corporate,2022-03-13,Male,649
+448,449,Ann Blume,Corporate,2022-03-14,Female,1288
+449,450,Sam Zeldin,Home Office,2022-03-15,Male,1007
+450,451,Michael Granlund,Home Office,2022-03-18,Female,1688
+451,452,Julie Kriz,Home Office,2022-03-18,Male,1926
+452,453,Paul Prost,Home Office,2022-03-19,Male,1073
+453,454,Yana Sorensen,Corporate,2022-03-19,Female,994
+454,455,Katherine Murray,Home Office,2022-03-20,Female,311
+455,456,Adrian Barton,Consumer,2022-03-21,Male,340
+456,457,Helen Abelman,Consumer,2022-03-21,Female,4393
+457,458,Beth Thompson,Home Office,2022-03-21,Female,1803
+458,459,Stuart Van,Corporate,2022-03-22,Female,4613
+459,460,Rick Wilson,Corporate,2022-04-01,Female,1312
+460,461,Damala Kotsonis,Corporate,2022-04-04,Male,4773
+461,462,Shui Tom,Consumer,2022-04-04,Female,653
+462,463,Michael Moore,Consumer,2022-04-06,Female,1751
+463,464,Pauline Webber,Corporate,2022-04-07,Female,292
+464,465,Shaun Chance,Corporate,2022-04-08,Male,61
+465,466,Thais Sissman,Consumer,2022-04-09,Female,1644
+466,467,Mark Cousins,Corporate,2022-04-12,Male,633
+467,468,Maria Etezadi,Home Office,2022-04-14,Male,1822
+468,469,Nicole Hansen,Corporate,2022-04-14,Female,1002
+469,470,Mick Brown,Consumer,2022-04-15,Female,957
+470,471,Keith Dawkins,Corporate,2022-04-15,Female,152
+471,472,Katherine Nockton,Corporate,2022-04-16,Female,261
+472,473,Nora Pelletier,Home Office,2022-04-17,Female,161
+473,474,Cindy Stewart,Consumer,2022-04-18,Female,3454
+474,475,Maxwell Schwartz,Consumer,2022-04-20,Female,3602
+475,476,Corinna Mitchell,Home Office,2022-04-21,Male,1289
+476,477,Corey-Lock,Consumer,2022-04-24,Female,1468
+477,478,Todd Sumrall,Corporate,2022-05-01,Male,1364
+478,479,Jane Waco,Corporate,2022-05-01,Male,3830
+479,480,John Dryer,Consumer,2022-05-02,Female,543
+480,481,Pauline Chand,Home Office,2022-05-02,Male,4955
+481,482,Andy Reiter,Consumer,2022-05-03,Female,674
+482,483,Arianne Irving,Consumer,2022-05-04,Male,4948
+483,484,Tom Boeckenhauer,Consumer,2022-05-05,Male,1752
+484,485,Paul Lucas,Home Office,2022-05-05,Male,937
+485,486,Gary Hwang,Consumer,2022-05-12,Male,1745
+486,487,Mike Pelletier,Home Office,2022-05-13,Female,1423
+487,488,Jim Mitchum,Corporate,2022-05-14,Male,664
+488,489,Carl Ludwig,Consumer,2022-05-18,Male,1031
+489,490,Deborah Brumfield,Home Office,2022-05-20,Male,547
+490,491,Ivan Gibson,Consumer,2022-05-20,Male,1716
+491,492,Bobby Odegard,Consumer,2022-05-21,Female,175
+492,493,Aimee Bixby,Consumer,2022-05-22,Male,75
+493,494,Julia West,Consumer,2022-06-01,Female,3390
+494,495,Edward Becker,Corporate,2022-06-02,Female,991
+495,496,Sheri Gordon,Consumer,2022-06-03,Female,1066
+496,497,Charlotte Melton,Consumer,2022-06-06,Male,683
+497,498,Anthony Witt,Consumer,2022-06-06,Male,400
+498,499,Mick Crebagga,Consumer,2022-06-07,Female,1373
+499,500,Tonja Turnell,Home Office,2022-06-10,Male,4441
+500,501,Vivek Grady,Corporate,2022-06-14,Male,1758
+501,502,Muhammed Yedwab,Corporate,2022-06-14,Male,1953
+502,503,Rick Duston,Consumer,2022-06-14,Female,154
+503,504,Dennis Pardue,Home Office,2022-06-14,Male,1803
+504,505,Marina Lichtenstein,Corporate,2022-06-15,Female,1273
+505,506,Jenna Caffey,Consumer,2022-06-17,Female,4714
+506,507,James Galang,Consumer,2022-06-17,Male,187
+507,508,Marc Crier,Consumer,2022-06-22,Female,1707
+508,509,Natalie Webber,Consumer,2022-06-22,Female,1470
+509,510,Toby Braunhardt,Consumer,2022-06-24,Female,1400
+510,511,Bill Stewart,Corporate,2022-07-01,Male,1807
+511,512,Hilary Holden,Corporate,2022-07-01,Female,3085
+512,513,Christina DeMoss,Consumer,2022-07-03,Female,240
+513,514,Thea Hendricks,Consumer,2022-07-04,Male,1366
+514,515,Michelle Moray,Consumer,2022-07-05,Female,5
+515,516,Neola Schneider,Consumer,2022-07-06,Male,1093
+516,517,Robert Barroso,Corporate,2022-07-07,Male,4096
+517,518,Shaun Weien,Consumer,2022-07-08,Female,56
+518,519,Eric Barreto,Consumer,2022-07-09,Female,1776
+519,520,Pamela Stobb,Consumer,2022-07-12,Male,1609
+520,521,Herbert Flentye,Consumer,2022-07-12,Male,1087
+521,522,Henia Zydlo,Consumer,2022-07-13,Female,3160
+522,523,Cynthia Delaney,Home Office,2022-07-13,Female,880
+523,524,Jamie Kunitz,Consumer,2022-07-14,Female,1620
+524,525,Filia McAdams,Corporate,2022-07-15,Female,433
+525,526,Emily Ducich,Home Office,2022-07-15,Female,4767
+526,527,Dianna Arnett,Home Office,2022-07-16,Male,418
+527,528,Joni Wasserman,Consumer,2022-07-18,Male,916
+528,529,Raymond Messe,Consumer,2022-07-22,Female,606
+529,530,Max Ludwig,Home Office,2022-07-23,Female,4807
+530,531,Craig Carroll,Consumer,2022-08-01,Female,1838
+531,532,Jim Epp,Corporate,2022-08-03,Male,125
+532,533,Roy Phan,Corporate,2022-08-04,Male,1393
+533,534,Thomas Boland,Corporate,2022-08-05,Female,842
+534,535,Brad Eason,Home Office,2022-08-06,Male,4739
+535,536,Jill Fjeld,Consumer,2022-08-10,Male,389
+536,537,Phillip Breyer,Corporate,2022-08-12,Male,1283
+537,538,Brian Thompson,Consumer,2022-08-16,Male,2
+538,539,Janet Lee,Consumer,2022-08-20,Male,332
+539,540,Cathy Hwang,Home Office,2022-08-21,Female,64
+540,541,Neil Ducich,Corporate,2022-09-02,Female,1
+541,542,Barbara Fisher,Corporate,2022-09-03,Male,3139
+542,543,Katharine Harms,Corporate,2022-09-06,Female,777
+543,544,Giulietta Weimer,Consumer,2022-09-09,Male,115
+544,545,Noah Childs,Corporate,2022-09-12,Female,460
+545,546,Michelle Ellison,Corporate,2022-09-12,Male,3457
+546,547,Benjamin Patterson,Consumer,2022-09-13,Female,1637
+547,548,John Castell,Consumer,2022-09-13,Female,1266
+548,549,Adam Shillingsburg,Consumer,2022-09-16,Female,3176
+549,550,Amy Cox,Consumer,2022-09-17,Female,1146
+550,551,Michael Dominguez,Corporate,2022-09-19,Male,1827
+551,552,Duane Benoit,Consumer,2022-09-20,Female,471
+552,553,Erica Hackney,Consumer,2022-09-21,Female,4998
+553,554,Edward Hooks,Corporate,2022-09-22,Female,67
+554,555,Scot Coram,Corporate,2022-09-22,Male,222
+555,556,Joe Elijah,Consumer,2022-09-23,Male,813
+556,557,Ann Chong,Corporate,2022-10-01,Female,1520
+557,558,Joy Daniels,Consumer,2022-10-01,Male,724
+558,559,Christy Brittain,Consumer,2022-10-05,Female,547
+559,560,Joy Smith,Consumer,2022-10-06,Female,324
+560,561,Luke Weiss,Consumer,2022-10-10,Male,117
+561,562,Stuart Calhoun,Consumer,2022-10-11,Female,4404
+562,563,Anne McFarland,Consumer,2022-10-12,Male,1713
+563,564,Rick Huthwaite,Home Office,2022-10-12,Female,1113
+564,565,Carol Triggs,Consumer,2022-10-13,Female,1218
+565,566,Matt Collister,Corporate,2022-10-15,Male,1613
+566,567,Corey Catlett,Corporate,2022-10-16,Female,1321
+567,568,Kelly Andreada,Consumer,2022-10-16,Female,1700
+568,569,Tamara Chand,Corporate,2022-10-16,Female,1270
+569,570,Bart Folk,Consumer,2022-10-16,Male,3361
+570,571,Magdelene Morse,Consumer,2022-10-20,Male,1313
+571,572,Adrian Hane,Home Office,2022-10-20,Female,1788
+572,573,Ben Wallace,Consumer,2022-10-22,Female,532
+573,574,Scot Wooten,Consumer,2022-10-23,Male,687
+574,575,Brian Stugart,Consumer,2022-10-24,Male,3694
+575,576,Randy Ferguson,Corporate,2022-11-01,Male,831
+576,577,William Brown,Consumer,2022-11-01,Male,894
+577,578,Trudy Brown,Consumer,2022-11-02,Female,1809
+578,579,Art Ferguson,Consumer,2022-11-02,Female,4722
+579,580,Richard Bierner,Consumer,2022-11-03,Male,589
+580,581,Karen Ferguson,Home Office,2022-11-06,Male,4335
+581,582,John Huston,Consumer,2022-11-06,Female,573
+582,583,Ivan Liston,Consumer,2022-11-07,Female,813
+583,584,Patrick Bzostek,Home Office,2022-11-08,Female,360
+584,585,Rob Haberlin,Consumer,2022-11-09,Male,507
+585,586,Arthur Wiediger,Home Office,2022-11-13,Female,1230
+586,587,Maris LaWare,Consumer,2022-11-16,Male,977
+587,588,Dorothy Badders,Corporate,2022-11-17,Female,1653
+588,589,Matt Hagelstein,Corporate,2022-11-19,Female,1101
+589,590,Dennis Kane,Consumer,2022-11-19,Female,1267
+590,591,Bobby Trafton,Consumer,2022-11-20,Female,1251
+591,592,Denny Blanton,Consumer,2022-11-22,Male,1303
+592,593,Toby Gnade,Consumer,2022-12-03,Male,918
+593,594,Barry Franz,Home Office,2022-12-05,Male,1474
+594,595,Justin MacKendrick,Consumer,2022-12-05,Female,1222
+595,596,Maria Zettner,Home Office,2022-12-07,Female,227
+596,597,Mitch Webber,Consumer,2022-12-08,Male,1028
+597,598,Mark Van Huff,Consumer,2022-12-10,Female,1904
+598,599,Sean Miller,Home Office,2022-12-15,Female,156
+599,600,Tom Prescott,Consumer,2022-12-15,Male,1562
+600,601,Jim Karlsson,Consumer,2022-12-16,Female,16
+601,602,Patrick Jones,Corporate,2022-12-16,Male,907
+602,603,Ricardo Sperren,Corporate,2022-12-17,Female,1397
+603,604,Susan Vittorini,Consumer,2022-12-18,Male,1306
+604,605,Becky Castell,Home Office,2022-12-19,Female,192
+605,606,Elizabeth Moffitt,Corporate,2022-12-20,Female,4515
+606,607,Brendan Murry,Corporate,2022-12-21,Male,3144
+607,608,Kristina Nunn,Home Office,2022-12-24,Male,4484
+608,609,Kelly Williams,Consumer,2023-01-01,Male,991
+609,610,Scott Cohen,Corporate,2023-01-03,Female,1583
+610,611,Christina VanderZanden,Consumer,2023-01-05,Female,1525
+611,612,Speros Goranitis,Consumer,2023-01-05,Male,1489
+612,613,Tamara Manning,Consumer,2023-01-05,Male,448
+613,614,Eleni McCrary,Corporate,2023-01-06,Male,382
+614,615,Michelle Lonsdale,Corporate,2023-01-10,Female,520
+615,616,Clay Rozendal,Home Office,2023-01-11,Male,1433
+616,617,Annie Zypern,Consumer,2023-01-12,Male,1315
+617,618,Pierre Wener,Consumer,2023-01-12,Female,4274
+618,619,Shahid Collister,Consumer,2023-01-14,Female,1086
+619,620,Carlos Meador,Consumer,2023-01-14,Female,3753
+620,621,Greg Maxwell,Corporate,2023-01-16,Female,487
+621,622,Tim Brockman,Consumer,2023-01-16,Male,4514
+622,623,John Murray,Consumer,2023-01-19,Male,25
+623,624,Sonia Cooley,Consumer,2023-01-22,Male,945
+624,625,Luke Schmidt,Corporate,2023-01-22,Female,478
+625,626,Ralph Ritter,Consumer,2023-02-01,Male,795
+626,627,Daniel Byrd,Home Office,2023-02-01,Female,3057
+627,628,Thomas Thornton,Consumer,2023-02-01,Female,534
+628,629,Lori Olson,Corporate,2023-02-01,Male,1690
+629,630,Ken Dana,Corporate,2023-02-02,Female,1444
+630,631,Nicole Brennan,Corporate,2023-02-03,Male,1053
+631,632,Brian Derr,Consumer,2023-02-05,Male,1298
+632,633,Chris McAfee,Consumer,2023-02-07,Female,515
+633,634,Edward Nazzal,Consumer,2023-02-07,Female,63
+634,635,Kean Nguyen,Corporate,2023-02-08,Male,430
+635,636,Bill Overfelt,Corporate,2023-02-08,Male,1441
+636,637,Aleksandra Gannaway,Corporate,2023-02-08,Male,1544
+637,638,Matthew Clasen,Corporate,2023-02-08,Male,1071
+638,639,Tom Ashbrook,Home Office,2023-02-12,Female,4668
+639,640,Jason Fortune-,Consumer,2023-02-14,Female,1549
+640,641,Tim Taslimi,Corporate,2023-02-14,Male,1617
+641,642,Sarah Bern,Consumer,2023-02-18,Female,1558
+642,643,Craig Leslie,Home Office,2023-02-22,Male,4395
+643,644,Hunter Glantz,Consumer,2023-02-24,Male,1897
+644,645,Nancy Lomonaco,Home Office,2023-03-01,Male,4259
+645,646,Rick Reed,Corporate,2023-03-01,Male,4280
+646,647,Toby Carlisle,Consumer,2023-03-02,Female,1291
+647,648,Stewart Visinsky,Consumer,2023-03-05,Male,1633
+648,649,Bobby Elias,Consumer,2023-03-05,Female,3952
+649,650,Steve Carroll,Home Office,2023-03-09,Male,1949
+650,651,David Flashing,Consumer,2023-03-12,Male,84
+651,652,Fred Harton,Consumer,2023-03-12,Male,1048
+652,653,MaryBeth Skach,Consumer,2023-03-12,Female,1947
+653,654,Ritsa Hightower,Consumer,2023-03-23,Female,942
+654,655,George Ashbrook,Consumer,2023-03-23,Male,1117
+655,656,Julie Prescott,Home Office,2023-03-24,Male,565
+656,657,Dean percer,Home Office,2023-03-24,Male,100
+657,658,Michael Oakman,Consumer,2023-04-01,Female,3290
+658,659,Denise Leinenbach,Consumer,2023-04-02,Male,280
+659,660,Michelle Huthwaite,Consumer,2023-04-02,Male,1943
+660,661,Daniel Raglin,Home Office,2023-04-06,Male,855
+661,662,Darrin Martin,Consumer,2023-04-06,Female,1357
+662,663,Carol Adams,Corporate,2023-04-10,Male,1840
+663,664,Anna Chung,Consumer,2023-04-10,Male,29
+664,665,Denise Monton,Corporate,2023-04-10,Male,1918
+665,666,Vicky Freymann,Home Office,2023-04-17,Male,986
+666,667,Christopher Conant,Consumer,2023-04-19,Female,859
+667,668,Beth Fritzler,Corporate,2023-04-19,Female,1504
+668,669,Harry Greene,Consumer,2023-04-20,Female,454
+669,670,Becky Pak,Consumer,2023-05-02,Female,178
+670,671,Eugene Moren,Home Office,2023-05-04,Female,581
+671,672,Michelle Arnett,Home Office,2023-05-04,Male,1587
+672,673,Andy Yotov,Corporate,2023-05-07,Male,1744
+673,674,Giulietta Baptist,Consumer,2023-05-07,Male,1095
+674,675,Julia Barnett,Home Office,2023-05-08,Male,4170
+675,676,Michael Grace,Home Office,2023-05-08,Male,1268
+676,677,Sharelle Roach,Home Office,2023-05-09,Female,3469
+677,678,Joy Bell-,Consumer,2023-05-10,Female,1588
+678,679,Dario Medina,Corporate,2023-05-11,Female,88
+679,680,Tony Chapman,Home Office,2023-05-15,Female,4893
+680,681,Sean Wendt,Home Office,2023-05-15,Female,360
+681,682,Richard Eichhorn,Consumer,2023-05-16,Female,1837
+682,683,Benjamin Farhat,Home Office,2023-05-18,Male,86
+683,684,Katrina Bavinger,Home Office,2023-05-19,Female,4396
+684,685,Jason Gross,Corporate,2023-05-20,Female,3371
+685,686,Erin Creighton,Consumer,2023-06-02,Female,945
+686,687,Eugene Barchas,Consumer,2023-06-04,Male,4577
+687,688,Jennifer Patt,Corporate,2023-06-07,Female,481
+688,689,Cari Sayre,Corporate,2023-06-08,Female,919
+689,690,Gary Hansen,Home Office,2023-06-08,Female,236
+690,691,Pete Takahito,Consumer,2023-06-11,Male,1342
+691,692,Jack Lebron,Consumer,2023-06-12,Female,4337
+692,693,Aaron Hawkins,Corporate,2023-06-17,Male,1385
+693,694,Cindy Chapman,Consumer,2023-06-18,Female,477
+694,695,David Wiener,Corporate,2023-06-21,Male,1093
+695,696,Sarah Jordon,Consumer,2023-06-22,Male,1626
+696,697,Bruce Geld,Consumer,2023-06-23,Female,218
+697,698,Laurel Beltran,Home Office,2023-06-24,Male,175
+698,699,Candace McMahon,Corporate,2023-07-01,Male,1737
+699,700,Evan Henry,Consumer,2023-07-01,Female,1022
+700,701,Tony Sayre,Consumer,2023-07-04,Female,1144
+701,702,Patrick Ryan,Consumer,2023-07-05,Female,234
+702,703,Liz Carlisle,Consumer,2023-07-05,Female,603
+703,704,Cindy Schnelling,Corporate,2023-07-06,Male,1089
+704,705,Dave Hallsten,Corporate,2023-07-07,Female,54
+705,706,Jack O'Briant,Corporate,2023-07-07,Female,1513
+706,707,Anna Häberlin,Corporate,2023-07-09,Male,122
+707,708,Heather Jas,Home Office,2023-07-10,Male,1972
+708,709,Mark Hamilton,Consumer,2023-07-11,Male,210
+709,710,Russell D'Ascenzo,Consumer,2023-07-13,Male,152
+710,711,Sam Craven,Consumer,2023-07-13,Female,561
+711,712,Stephanie Ulpright,Home Office,2023-07-14,Female,1655
+712,713,Fred Chung,Corporate,2023-07-18,Female,926
+713,714,Randy Bradley,Consumer,2023-07-18,Female,1664
+714,715,Nick Crebassa,Corporate,2023-07-19,Female,1586
+715,716,Darren Budd,Corporate,2023-07-21,Female,654
+716,717,Maureen Fritzler,Corporate,2023-08-01,Male,1644
+717,718,Roland Murray,Consumer,2023-08-08,Male,1620
+718,719,Vivian Mathis,Consumer,2023-08-11,Female,4016
+719,720,Ed Jacobs,Consumer,2023-08-12,Male,1135
+720,721,Nathan Cano,Consumer,2023-08-17,Female,15
+721,722,Lycoris Saunders,Consumer,2023-08-19,Male,245
+722,723,Katrina Edelman,Corporate,2023-08-21,Female,4757
+723,724,Duane Huffman,Home Office,2023-08-21,Male,822
+724,725,Peter Fuller,Consumer,2023-08-23,Male,867
+725,726,Valerie Takahito,Home Office,2023-08-24,Male,1290
+726,727,Maureen Gnade,Consumer,2023-09-01,Female,914
+727,728,Susan Pistek,Consumer,2023-09-02,Male,707
+728,729,Charles Sheldon,Corporate,2023-09-02,Male,72
+729,730,Dana Kaydos,Consumer,2023-09-02,Female,1400
+730,731,Khloe Miller,Consumer,2023-09-07,Female,4839
+731,732,Anna Andreadi,Consumer,2023-09-08,Female,1426
+732,733,Dorothy Dickinson,Consumer,2023-09-10,Female,1921
+733,734,Amy Hunt,Consumer,2023-09-13,Male,4613
+734,735,Tracy Poddar,Corporate,2023-09-14,Male,125
+735,736,Eileen Kiefer,Home Office,2023-09-14,Female,1440
+736,737,Cyra Reiten,Home Office,2023-09-17,Female,3323
+737,738,Susan Gilcrest,Corporate,2023-09-17,Male,3701
+738,739,Angele Hood,Consumer,2023-09-20,Female,740
+739,740,Neil Französisch,Home Office,2023-09-20,Female,648
+740,741,Bill Shonely,Corporate,2023-09-22,Male,572
+741,742,Stefanie Holloman,Corporate,2023-09-24,Female,1921
+742,743,Roger Demir,Consumer,2023-09-24,Female,413
+743,744,Alex Grayson,Consumer,2023-10-04,Male,1816
+744,745,Georgia Rosenberg,Corporate,2023-10-04,Female,667
+745,746,Vivek Sundaresam,Consumer,2023-10-05,Male,1923
+746,747,Tony Molinari,Consumer,2023-10-08,Male,39
+747,748,Tom Stivers,Corporate,2023-10-12,Male,1639
+748,749,Dennis Bolton,Home Office,2023-10-13,Male,468
+749,750,Nick Radford,Consumer,2023-10-14,Female,39
+750,751,Cari Schnelling,Consumer,2023-10-18,Female,3528
+751,752,Monica Federle,Corporate,2023-10-19,Male,3379
+752,753,Liz Willingham,Consumer,2023-10-20,Female,170
+753,754,Alex Russell,Corporate,2023-10-20,Female,119
+754,755,Karen Seio,Corporate,2023-10-23,Male,898
+755,756,Aaron Bergman,Consumer,2023-10-23,Female,4324
+756,757,Lisa Ryan,Corporate,2023-11-02,Male,414
+757,758,Shahid Shariari,Consumer,2023-11-02,Female,1341
+758,759,Jill Matthias,Consumer,2023-11-03,Male,4291
+759,760,Jason Klamczynski,Corporate,2023-11-04,Male,836
+760,761,Don Miller,Corporate,2023-11-04,Female,3745
+761,762,Muhammed Lee,Consumer,2023-11-04,Female,1951
+762,763,Marc Harrigan,Home Office,2023-11-04,Female,4663
+763,764,Frank Carlisle,Home Office,2023-11-07,Male,3217
+764,765,Thea Hudgings,Corporate,2023-11-10,Female,1402
+765,766,Juliana Krohn,Consumer,2023-11-10,Female,1542
+766,767,Sarah Brown,Consumer,2023-11-11,Female,1460
+767,768,Barry Gonzalez,Consumer,2023-11-13,Female,3577
+768,769,Barry Weirich,Consumer,2023-11-13,Male,1106
+769,770,Mitch Gastineau,Corporate,2023-11-13,Male,784
+770,771,Doug O'Connell,Consumer,2023-11-15,Male,469
+771,772,Barry Pond,Corporate,2023-11-18,Male,670
+772,773,Trudy Schmidt,Consumer,2023-11-20,Female,1057
+773,774,Evan Minnotte,Home Office,2023-11-20,Female,1997
+774,775,Anthony O'Donnell,Corporate,2023-11-20,Male,1360
+775,776,Mark Haberlin,Corporate,2023-11-21,Female,158
+776,777,Shirley Schmidt,Home Office,2023-11-22,Female,169
+777,778,Lela Donovan,Corporate,2023-11-22,Male,1372
+778,779,Victoria Pisteka,Corporate,2023-12-04,Female,440
+779,780,Theresa Coyne,Corporate,2023-12-05,Female,1672
+780,781,Ionia McGrath,Consumer,2023-12-06,Male,3659
+781,782,Anemone Ratner,Consumer,2023-12-08,Female,4874
+782,783,Craig Molinari,Corporate,2023-12-08,Male,1050
+783,784,Fred Wasserman,Corporate,2023-12-09,Female,3446
+784,785,Lindsay Castell,Home Office,2023-12-09,Female,4763
+785,786,Harold Engle,Corporate,2023-12-12,Female,1871
+786,787,Brendan Dodson,Home Office,2023-12-14,Female,798
+787,788,Harold Dahlen,Home Office,2023-12-16,Male,1663
+788,789,Carl Jackson,Corporate,2023-12-19,Female,1619
+789,790,Roy Skaria,Home Office,2023-12-21,Female,4200
+790,791,Sung Chung,Consumer,2023-12-21,Male,1157
+791,792,Ricardo Emerson,Consumer,2023-12-22,Male,1753
+792,793,Susan MacKendrick,Consumer,2023-12-23,Female,55

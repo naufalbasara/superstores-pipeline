@@ -1,9 +1,9 @@
 import os, pandas as pd, logging
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from etl.db_airflow import DB_Airflow
 from etl.extract import (
-    extract_dim_time,extract_dim_customer,extract_dim_location,extract_dim_product
+    extract_dim_time,extract_dim_customer,extract_dim_location,extract_dim_product,extract_visits
 )
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow.providers.postgres.operators.postgres import SQLExecuteQueryOperator
@@ -30,7 +30,7 @@ def extract_time(last_update=datetime.today()):
     except TimeoutError as timeout_err:
         logging.error(f"[TIMEOUT] {timeout_err}")
     except Exception as error:
-        logging.error(f"[ERROR] {error}")
+        logging.error(error)
 
 def extract_location(last_update=datetime.today()):
     last_update = datetime.strftime(last_update, format='%H-%M_%Y-%m-%d')
@@ -45,7 +45,7 @@ def extract_location(last_update=datetime.today()):
     except TimeoutError as timeout_err:
         logging.error(f"[TIMEOUT] {timeout_err}")
     except Exception as error:
-        logging.error(f"[ERROR] {error}")
+        logging.error(error)
 
 def extract_customer(last_update=datetime.today()):
     last_update = datetime.strftime(last_update, format='%H-%M_%Y-%m-%d')
@@ -60,7 +60,7 @@ def extract_customer(last_update=datetime.today()):
     except TimeoutError as timeout_err:
         logging.error(f"[TIMEOUT] {timeout_err}")
     except Exception as error:
-        logging.error(f"[ERROR] {error}")
+        logging.error(error)
 
 def extract_product(last_update=datetime.today()):
     last_update = datetime.strftime(last_update, format='%H-%M_%Y-%m-%d')
@@ -74,7 +74,7 @@ def extract_product(last_update=datetime.today()):
     except TimeoutError as timeout_err:
         logging.error(f"[TIMEOUT] {timeout_err}")
     except Exception as error:
-        logging.error(f"[ERROR] {error}")
+        logging.error(error)
 
 def generate_fact_sales(last_update=datetime.today()):
     last_update = datetime.strftime(last_update, format='%H-%M_%Y-%m-%d')
@@ -89,33 +89,71 @@ def generate_fact_sales(last_update=datetime.today()):
         dim_time = pd.read_csv('data/dim_time.csv')
         dim_time['datum'] = dim_time['datum'].apply(pd.to_datetime)
 
-        fact_sales = pd.merge(left=sales_merged, right=dim_time, left_on='order_date', right_on='datum')[
+        fact_sales = pd.merge(left=sales_merged, right=dim_time, left_on='order_date', right_on='datum', how='left')[
             ['customer_id', 'ship_to', 'product_id', 'time_key', 'quantity', 'subtotal']
         ].rename(columns={
             'customer_id':'customer_key', 'ship_to':'location_key', 'product_id':'product_key'
             })
         
         fact_sales.to_csv('data/fct_sales_staging.csv')
+        sales_df.to_csv('data/sales_data.csv')
 
         return True
     except TimeoutError as timeout_err:
         logging.error(f"[TIMEOUT] {timeout_err}")
     except Exception as error:
-        logging.error(f"[ERROR] {error}")
+        logging.error(error)
+
+def generate_fact_marketing(last_update=datetime.today()):
+    last_update = datetime.strftime(last_update, format='%H-%M_%Y-%m-%d')
+    db_instance = DB_Airflow(conn_id='prod_pg', database='postgres')
+
+    # Extraction
+    try:
+        dim_time = pd.read_csv('data/dim_time.csv')
+        dim_time = dim_time.drop(columns=['Unnamed: 0'])
+        dim_time['datum'] = dim_time['datum'].apply(pd.to_datetime)
+
+        sales_df = pd.read_csv('data/sales_data.csv')
+        sales_df = sales_df.drop(columns=['Unnamed: 0'])
+        sales_df['order_date'] = sales_df['order_date'].apply(pd.to_datetime)
+        sales_df = sales_df.groupby(['customer_id', 'ship_to', 'order_date']).agg({'sales_id':'size', 'total':'sum'})
+        sales_df = sales_df.rename(columns={'sales_id': 'orders'}).reset_index()
+
+        dim_customer = pd.read_csv('data/dim_customer.csv')
+        dim_customer = dim_customer.drop(columns=['Unnamed: 0'])
+        
+        if os.path.exists('data/customer_visit.csv'):
+            visits_df = pd.read_csv('data/customer_visit.csv')
+            visits_df = visits_df.drop(columns=['Unnamed: 0'])
+        else:
+            visits_df = extract_visits(db_object=db_instance)
+            visits_df.to_csv('data/customer_visit.csv')
+
+        fact_marketing = pd.merge(left=dim_customer, right=visits_df, on='customer_key', how='left')[['customer_key', 'visits']]
+        fact_marketing = pd.merge(left=fact_marketing, right=sales_df, left_on='customer_key', right_on='customer_id', how='left')[['customer_key', 'ship_to', 'order_date', 'visits','orders', 'total']]
+        fact_marketing = pd.merge(fact_marketing, dim_time, left_on='order_date', right_on='datum', how='left')[['customer_key', 'ship_to', 'time_key', 'visits', 'orders', 'total']]
+
+        fact_marketing['conversion_rate'] = fact_marketing['orders'] / fact_marketing['visits']
+        fact_marketing['avg_purchase_value'] = fact_marketing['total'] / fact_marketing['orders']
+        fact_marketing = fact_marketing.loc[:, ['customer_key', 'ship_to', 'time_key', 'conversion_rate', 'avg_purchase_value']].rename(columns={'ship_to': 'location_key'})
+
+        fact_marketing.to_csv('data/fct_marketing_staging.csv')
+
+        return True
+    except TimeoutError as timeout_err:
+        logging.error(f"[TIMEOUT] {timeout_err}")
+    except Exception as error:
+        logging.error(error)
 
 with DAG(
     dag_id='db_extraction',
-    schedule='*/15 * * * *',
-    start_date=datetime(year=2024, month=9, day=11, tzinfo=local_tz),
+    schedule='@weekly',
+    start_date=datetime(year=2024, month=9, day=9, tzinfo=local_tz),
 ) as dag:
     info_log_start = BashOperator(
-        task_id='bash1',
+        task_id='starting_log',
         bash_command=f'echo "Starting data extraction from DB production";'
-    )
-
-    cleanup_dir = BashOperator(
-        task_id='starting_cleanup',
-        bash_command=f'rm data/* & true'
     )
 
     # Fetching all dimension
@@ -145,31 +183,30 @@ with DAG(
         python_callable=generate_fact_sales,
     )
 
+    transform_fact_marketing = PythonOperator(
+        task_id='generate_fact_marketing',
+        python_callable=generate_fact_marketing,
+    )
+
     # Sensor waiting for a file
-    check_files = FileSensor(
-        task_id='check_fact_files',
-        filepath='data/fct_sales_staging.csv'
+    check_sales_file = FileSensor(
+        task_id='check_fact_sales',
+        fs_conn_id='data_path',
+        filepath='fct_sales_staging.csv',
+        max_wait=timedelta(seconds=30)
+    )
+
+    check_marketing_file = FileSensor(
+        task_id='check_fact_marketing',
+        fs_conn_id='data_path',
+        filepath='fct_marketing_staging.csv',
+        max_wait=timedelta(seconds=30)
     )
 
     info_log_end = BashOperator(
-        task_id='bash2',
-        bash_command=f'echo "[INFO]: Starting data extraction from DB production";'
+        task_id='ending_log',
+        bash_command=f'echo "Data extraction completed.";'
     )
 
     info_log_start >> [fetch_time_dim, fetch_location_dim, fetch_product_dim, fetch_customer_dim] >> transform_fact_sales
-    transform_fact_sales >> check_files >> info_log_end
-
-# web_visits = extract_visits(db_object=prod_conn)
-# sales_df = extract_sales(db_object=prod_conn)
-# sale_product_df = extract_sale_product(db_object=prod_conn)
-# print(f"Extraction finished in {time.time() - extract_start}s")
-
-# # generate sales fact
-# sales_merged = pd.merge(left=sale_product_df, right=sales_df, on='sales_id')[['customer_id', 'ship_to', 'product_id', 'order_date', 'quantity', 'subtotal']]
-# sales_merged = sales_merged.groupby(['customer_id', 'ship_to', 'product_id', 'order_date']).sum().reset_index()
-
-# fact_sales = pd.merge(left=sales_merged, right=dim_time, left_on='order_date', right_on='datum')[
-# ['customer_id', 'ship_to', 'product_id', 'time_key', 'quantity', 'subtotal']
-# ].rename(columns={
-# 'customer_id':'customer_key', 'ship_to':'location_key', 'product_id':'product_key'
-# })
+    transform_fact_sales >> transform_fact_marketing >> [check_sales_file, check_marketing_file] >> info_log_end
