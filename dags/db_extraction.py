@@ -24,7 +24,7 @@ def extract_time(last_update=datetime.today()):
     try:
         logging.info('Extracting time dimension')
         dim_time = extract_dim_time(db_object=db_instance)
-        dim_time.to_csv(os.path.join('data', f'dim_time.csv'))
+        dim_time.set_index('time_key').to_csv(os.path.join('data', f'dim_time.csv'))
 
         return True
     except TimeoutError as timeout_err:
@@ -40,7 +40,7 @@ def extract_location(last_update=datetime.today()):
     try:
         logging.info('Extracting location dimension')
         dim_location = extract_dim_location(db_object=db_instance)
-        dim_location.to_csv(os.path.join('data', f'dim_location.csv'))
+        dim_location.set_index('location_key').to_csv(os.path.join('data', f'dim_location.csv'))
         return True
     except TimeoutError as timeout_err:
         logging.error(f"[TIMEOUT] {timeout_err}")
@@ -55,7 +55,7 @@ def extract_customer(last_update=datetime.today()):
     try:
         logging.info('Extracting customer dimension')
         dim_customer = extract_dim_customer(db_object=db_instance)
-        dim_customer.to_csv(os.path.join('data', f'dim_customer.csv'))
+        dim_customer.set_index('customer_key').to_csv(os.path.join('data', f'dim_customer.csv'))
         return True
     except TimeoutError as timeout_err:
         logging.error(f"[TIMEOUT] {timeout_err}")
@@ -69,7 +69,7 @@ def extract_product(last_update=datetime.today()):
     # Extraction
     try:
         dim_product = extract_dim_product(db_object=db_instance)
-        dim_product.to_csv(os.path.join('data', f'dim_product.csv'))
+        dim_product.set_index('product_key').to_csv(os.path.join('data', f'dim_product.csv'))
         return True
     except TimeoutError as timeout_err:
         logging.error(f"[TIMEOUT] {timeout_err}")
@@ -87,9 +87,9 @@ def generate_fact_sales(last_update=datetime.today()):
         sales_merged = pd.merge(left=sale_product_df, right=sales_df, on='sales_id')[['customer_id', 'ship_to', 'product_id', 'order_date', 'quantity', 'subtotal']]
         sales_merged = sales_merged.groupby(['customer_id', 'ship_to', 'product_id', 'order_date']).sum().reset_index()
         dim_time = pd.read_csv('data/dim_time.csv')
-        dim_time['datum'] = dim_time['datum'].apply(pd.to_datetime)
+        dim_time['date'] = dim_time['date'].apply(pd.to_datetime)
 
-        fact_sales = pd.merge(left=sales_merged, right=dim_time, left_on='order_date', right_on='datum', how='left')[
+        fact_sales = pd.merge(left=sales_merged, right=dim_time, left_on='order_date', right_on='date', how='left')[
             ['customer_id', 'ship_to', 'product_id', 'time_key', 'quantity', 'subtotal']
         ].rename(columns={
             'customer_id':'customer_key', 'ship_to':'location_key', 'product_id':'product_key'
@@ -111,8 +111,7 @@ def generate_fact_marketing(last_update=datetime.today()):
     # Extraction
     try:
         dim_time = pd.read_csv('data/dim_time.csv')
-        dim_time = dim_time.drop(columns=['Unnamed: 0'])
-        dim_time['datum'] = dim_time['datum'].apply(pd.to_datetime)
+        dim_time['date'] = dim_time['date'].apply(pd.to_datetime)
 
         sales_df = pd.read_csv('data/sales_data.csv')
         sales_df = sales_df.drop(columns=['Unnamed: 0'])
@@ -121,7 +120,6 @@ def generate_fact_marketing(last_update=datetime.today()):
         sales_df = sales_df.rename(columns={'sales_id': 'orders'}).reset_index()
 
         dim_customer = pd.read_csv('data/dim_customer.csv')
-        dim_customer = dim_customer.drop(columns=['Unnamed: 0'])
         
         if os.path.exists('data/customer_visit.csv'):
             visits_df = pd.read_csv('data/customer_visit.csv')
@@ -132,7 +130,7 @@ def generate_fact_marketing(last_update=datetime.today()):
 
         fact_marketing = pd.merge(left=dim_customer, right=visits_df, on='customer_key', how='left')[['customer_key', 'visits']]
         fact_marketing = pd.merge(left=fact_marketing, right=sales_df, left_on='customer_key', right_on='customer_id', how='left')[['customer_key', 'ship_to', 'order_date', 'visits','orders', 'total']]
-        fact_marketing = pd.merge(fact_marketing, dim_time, left_on='order_date', right_on='datum', how='left')[['customer_key', 'ship_to', 'time_key', 'visits', 'orders', 'total']]
+        fact_marketing = pd.merge(fact_marketing, dim_time, left_on='order_date', right_on='date', how='left')[['customer_key', 'ship_to', 'time_key', 'visits', 'orders', 'total']]
 
         fact_marketing['conversion_rate'] = fact_marketing['orders'] / fact_marketing['visits']
         fact_marketing['avg_purchase_value'] = fact_marketing['total'] / fact_marketing['orders']
@@ -193,14 +191,16 @@ with DAG(
         task_id='check_fact_sales',
         fs_conn_id='data_path',
         filepath='fct_sales_staging.csv',
-        max_wait=timedelta(seconds=30)
+        max_wait=timedelta(seconds=30),
+        retries=2
     )
 
     check_marketing_file = FileSensor(
         task_id='check_fact_marketing',
         fs_conn_id='data_path',
         filepath='fct_marketing_staging.csv',
-        max_wait=timedelta(seconds=30)
+        max_wait=timedelta(seconds=30),
+        retries=2
     )
 
     info_log_end = BashOperator(

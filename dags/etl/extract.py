@@ -4,8 +4,9 @@ import os, time, pandas as pd, re
 from datetime import datetime
 from airflow.providers.postgres.operators.postgres import PostgresOperator
 from airflow.providers.postgres.hooks.postgres import PostgresHook
+from etl.db_airflow import DB_Airflow
 
-def extract_dim_time(db_object) -> pd.DataFrame:
+def extract_dim_time(db_object:DB_Airflow) -> pd.DataFrame:
     try:
         dimtime_sql = """
             select
@@ -25,7 +26,9 @@ def extract_dim_time(db_object) -> pd.DataFrame:
             """
         dim_time = db_object.query(dimtime_sql)
         dim_time['datum'] = dim_time['datum'].apply(pd.to_datetime)
+        dim_time = dim_time.rename(columns={'datum':'date'})
         dim_time[['day_of_month', 'week_of_month', 'month','year', 'quarter_of_year']] = dim_time[['day_of_month', 'week_of_month', 'month','year', 'quarter_of_year']].astype(int)
+        dim_time = dim_time[['time_key', 'day_of_month', 'week_of_month', 'month','year', 'quarter_of_year', 'date']]
 
         return dim_time
     
@@ -67,7 +70,7 @@ def extract_dim_product(db_object, last_update=None) -> pd.DataFrame:
         if last_update == None:
             dim_customer = db_object.query_df(
                 """
-                    select p.product_id as product_key, p.category, p.subcategory, p.product_name, ROUND(cast(avg(sp.ratings) as numeric), 2) as product_rating
+                    select p.product_id as product_key, p.category, p.subcategory, p.product_name, ROUND(cast(avg(sp.ratings) as numeric), 2) as ratings
                     from product p 
                     left join sale_product sp on p.product_id = sp.product_id
                     group by 1, 4, 3, 2
@@ -77,7 +80,7 @@ def extract_dim_product(db_object, last_update=None) -> pd.DataFrame:
         
         return db_object.query_df(
             f"""
-                select p.product_id as product_key, p.category, p.subcategory, p.product_name, ROUND(cast(avg(sp.ratings) as numeric), 2) as product_rating
+                select p.product_id as product_key, p.category, p.subcategory, p.product_name, ROUND(cast(avg(sp.ratings) as numeric), 2) as ratings
                 from product p 
                 left join sale_product sp on p.product_id = sp.product_id
                 group by 1, 4, 3, 2
@@ -126,7 +129,7 @@ def extract_fct_sales(db_object):
                     ) as DQ
                     order by 1
                 ), dim_product as (
-                    select p.product_id as product_key, p.category, p.subcategory, p.product_name, ROUND(cast(avg(sp.ratings) as numeric), 2) as product_rating
+                    select p.product_id as product_key, p.category, p.subcategory, p.product_name, ROUND(cast(avg(sp.ratings) as numeric), 2) as ratings
                     from product p 
                     left join sale_product sp on p.product_id = sp.product_id
                     group by 1, 4, 3, 2

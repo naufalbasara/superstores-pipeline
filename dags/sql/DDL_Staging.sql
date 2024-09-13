@@ -43,6 +43,7 @@ CREATE TABLE "dim_product" (
 
 CREATE TABLE "dim_time" (
   "time_id" serial PRIMARY KEY,
+  'date' date,
   "day_of_month" int,
   "week_of_month" int,
   "month" month,
