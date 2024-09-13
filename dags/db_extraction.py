@@ -17,7 +17,7 @@ import pendulum
 local_tz = pendulum.timezone("Asia/Jakarta")
 
 def extract_time(last_update=datetime.today()):
-    last_update = datetime.strftime(last_update, format='%H-%M_%Y-%m-%d')
+    last_update = datetime.strftime(last_update, format='%Y-%m-%d')
     db_instance = DB_Airflow(conn_id='prod_pg', database='postgres')
 
     # Extraction
@@ -33,7 +33,7 @@ def extract_time(last_update=datetime.today()):
         logging.error(error)
 
 def extract_location(last_update=datetime.today()):
-    last_update = datetime.strftime(last_update, format='%H-%M_%Y-%m-%d')
+    last_update = datetime.strftime(last_update, format='%Y-%m-%d')
     db_instance = DB_Airflow(conn_id='prod_pg', database='postgres')
 
     # Extraction
@@ -48,7 +48,7 @@ def extract_location(last_update=datetime.today()):
         logging.error(error)
 
 def extract_customer(last_update=datetime.today()):
-    last_update = datetime.strftime(last_update, format='%H-%M_%Y-%m-%d')
+    last_update = datetime.strftime(last_update, format='%Y-%m-%d')
     db_instance = DB_Airflow(conn_id='prod_pg', database='postgres')
 
     # Extraction
@@ -63,7 +63,7 @@ def extract_customer(last_update=datetime.today()):
         logging.error(error)
 
 def extract_product(last_update=datetime.today()):
-    last_update = datetime.strftime(last_update, format='%H-%M_%Y-%m-%d')
+    last_update = datetime.strftime(last_update, format='%Y-%m-%d')
     db_instance = DB_Airflow(conn_id='prod_pg', database='postgres')
 
     # Extraction
@@ -77,13 +77,17 @@ def extract_product(last_update=datetime.today()):
         logging.error(error)
 
 def generate_fact_sales(last_update=datetime.today()):
-    last_update = datetime.strftime(last_update, format='%H-%M_%Y-%m-%d')
+    last_update = datetime.strftime(datetime.today() if last_update == None else last_update, format='%Y-%m-%d')
     db_instance = DB_Airflow(conn_id='prod_pg', database='postgres')
 
     # Extraction
     try:
-        sales_df = db_instance.query_df("select * from sales;")
-        sale_product_df = db_instance.query_df("select * from sale_product;")
+        sales_df = db_instance.query_df(f"select * from sales where order_date{'<=' if last_update == datetime.today() else '>='}'{last_update}'")
+        sale_product_df = db_instance.query_df(f"""
+            select * from sale_product where sales_id in (
+                select sales_id from sales where order_date {'<=' if last_update == datetime.today() else '>='} '{last_update}'
+            )
+        """)
         sales_merged = pd.merge(left=sale_product_df, right=sales_df, on='sales_id')[['customer_id', 'ship_to', 'product_id', 'order_date', 'quantity', 'subtotal']]
         sales_merged = sales_merged.groupby(['customer_id', 'ship_to', 'product_id', 'order_date']).sum().reset_index()
         dim_time = pd.read_csv('data/dim_time.csv')
@@ -95,7 +99,7 @@ def generate_fact_sales(last_update=datetime.today()):
             'customer_id':'customer_key', 'ship_to':'location_key', 'product_id':'product_key'
             })
         
-        fact_sales.to_csv('data/fct_sales_staging.csv')
+        fact_sales.set_index('customer_key').to_csv('data/fct_sales_staging.csv')
         sales_df.to_csv('data/sales_data.csv')
 
         return True
@@ -105,7 +109,7 @@ def generate_fact_sales(last_update=datetime.today()):
         logging.error(error)
 
 def generate_fact_marketing(last_update=datetime.today()):
-    last_update = datetime.strftime(last_update, format='%H-%M_%Y-%m-%d')
+    last_update = datetime.strftime(datetime.today() if last_update == None else last_update, format='%Y-%m-%d')
     db_instance = DB_Airflow(conn_id='prod_pg', database='postgres')
 
     # Extraction
@@ -125,7 +129,7 @@ def generate_fact_marketing(last_update=datetime.today()):
             visits_df = pd.read_csv('data/customer_visit.csv')
             visits_df = visits_df.drop(columns=['Unnamed: 0'])
         else:
-            visits_df = extract_visits(db_object=db_instance)
+            visits_df = extract_visits(last_update=datetime.today(), db_object=db_instance)
             visits_df.to_csv('data/customer_visit.csv')
 
         fact_marketing = pd.merge(left=dim_customer, right=visits_df, on='customer_key', how='left')[['customer_key', 'visits']]
@@ -136,7 +140,7 @@ def generate_fact_marketing(last_update=datetime.today()):
         fact_marketing['avg_purchase_value'] = fact_marketing['total'] / fact_marketing['orders']
         fact_marketing = fact_marketing.loc[:, ['customer_key', 'ship_to', 'time_key', 'conversion_rate', 'avg_purchase_value']].rename(columns={'ship_to': 'location_key'})
 
-        fact_marketing.to_csv('data/fct_marketing_staging.csv')
+        fact_marketing.set_index('customer_key').to_csv('data/fct_marketing_staging.csv')
 
         return True
     except TimeoutError as timeout_err:
@@ -179,11 +183,13 @@ with DAG(
     transform_fact_sales = PythonOperator(
         task_id='generate_fact_sales',
         python_callable=generate_fact_sales,
+        op_kwargs={'last_update': datetime(year=2000, month=1, day=1)} # MAKE SURE THE LAST EXTRACTION DATE
     )
 
     transform_fact_marketing = PythonOperator(
         task_id='generate_fact_marketing',
         python_callable=generate_fact_marketing,
+        op_kwargs={'last_update': datetime(year=2000, month=1, day=1)} # MAKE SURE THE LAST EXTRACTION DATE
     )
 
     # Sensor waiting for a file
@@ -209,4 +215,4 @@ with DAG(
     )
 
     info_log_start >> [fetch_time_dim, fetch_location_dim, fetch_product_dim, fetch_customer_dim] >> transform_fact_sales
-    transform_fact_sales >> transform_fact_marketing >> [check_sales_file, check_marketing_file] >> info_log_end
+    transform_fact_sales >> check_sales_file >> transform_fact_marketing >> check_marketing_file >> info_log_end

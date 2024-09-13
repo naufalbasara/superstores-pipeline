@@ -235,6 +235,55 @@ def load_customer_dim():
     except Exception as error:
         logging.error(f'Failed to load customer table due to: {error}')
 
+def load_sales_fact():
+    db_instance = DB_Airflow(conn_id='staging_db', database='postgres')
+    try:
+        file_path = 'data/fct_sales_staging.csv'
+        temp_db = """
+            DROP TABLE IF EXISTS temp_sales;
+            CREATE TEMP TABLE temp_sales (LIKE fct_sales);
+            COPY temp_sales FROM stdin (DELIMITER ',', HEADER TRUE, FORMAT CSV);
+        """
+        db_instance.pg_hook.copy_expert(sql=temp_db, filename=file_path)
+        db_instance.cur.execute(
+            f"""
+                INSERT INTO fct_sales(customer_key, location_key, product_key, time_key, quantity, sales) 
+                SELECT * FROM temp_sales;
+            """
+        )
+        db_instance.connection.commit()
+
+        logging.info(f'Sales fact loaded into staging DB.')
+    except TimeoutError as timeout_err:
+        logging.error(f"[TIMEOUT] {timeout_err}")
+    except Exception as error:
+        logging.error(f'Failed to load sales fact table due to: {error}')
+
+def load_marketing_fact():
+    db_instance = DB_Airflow(conn_id='staging_db', database='postgres')
+    try:
+        file_path = 'data/fct_marketing_staging.csv'
+        temp_db = """
+            DROP TABLE IF EXISTS temp_marketing;
+            CREATE TEMP TABLE temp_marketing (LIKE fct_marketing);
+            COPY temp_marketing FROM stdin (DELIMITER ',', HEADER TRUE, FORMAT CSV);
+        """
+        db_instance.pg_hook.copy_expert(sql=temp_db, filename=file_path)
+        db_instance.cur.execute(
+            f"""
+                INSERT INTO fct_marketing(customer_key,location_key,time_key,conversion_rate,avg_purchase_value)
+                SELECT * FROM temp_marketing;
+            """
+        )
+        db_instance.connection.commit()
+
+        logging.info(f'Marketing fact loaded into staging DB.')
+    except TimeoutError as timeout_err:
+        logging.error(f"[TIMEOUT] {timeout_err}")
+    except Exception as error:
+        logging.error(f'Failed to load marketing fact table due to: {error}')
+    return
+
 # Full Extraction (Drop and Load)
 with DAG(
     dag_id='staging_dimensions_load',
@@ -322,5 +371,17 @@ with DAG(
         max_wait=timedelta(seconds=30)
     )
 
+    push_sales_fact = PythonOperator(
+        task_id='push_sales_fact',
+        python_callable=load_sales_fact
+    )
+
+    push_marketing_fact = PythonOperator(
+        task_id='push_marketing_fact',
+        python_callable=load_marketing_fact
+    )
+
 
     starting_log >> [check_sales_file, check_marketing_file]
+    check_sales_file >> push_sales_fact
+    check_marketing_file >> push_marketing_fact

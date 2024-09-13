@@ -183,11 +183,12 @@ def extract_sale_product(db_object):
 
     return
 
-def extract_visits(db_object):
+def extract_visits(last_update, db_object):
     try:
-        return db_object.query_df("""
+        return db_object.query_df(f"""
             select customer_id as customer_key, count(customer_id) as visits
             from web_visit wv
+            where time_visit {'<=' if last_update == datetime.today() else '>='} '{last_update}'
             group by 1;
         """)
     except TimeoutError as timeout_err:
