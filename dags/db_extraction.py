@@ -1,4 +1,4 @@
-import os, pandas as pd, logging
+import os, logging
 
 from datetime import datetime, timedelta
 from etl.db_airflow import DB_Airflow
@@ -32,14 +32,15 @@ def extract_time(last_update=datetime.today()):
     except Exception as error:
         logging.error(error)
 
-def extract_location(last_update=datetime.today()):
-    last_update = datetime.strftime(last_update, format='%Y-%m-%d')
+def extract_location(**context):
+    last_update = datetime.strftime(context['last_update'], format='%Y-%m-%d')
     db_instance = DB_Airflow(conn_id='prod_pg', database='postgres')
 
     # Extraction
     try:
         logging.info('Extracting location dimension')
         dim_location = extract_dim_location(db_object=db_instance)
+        dim_location['inserted_at'] = context['ti'].xcom_pull('start_exec_time')
         dim_location.set_index('location_key').to_csv(os.path.join('data', f'dim_location.csv'))
         return True
     except TimeoutError as timeout_err:
@@ -47,14 +48,15 @@ def extract_location(last_update=datetime.today()):
     except Exception as error:
         logging.error(error)
 
-def extract_customer(last_update=datetime.today()):
-    last_update = datetime.strftime(last_update, format='%Y-%m-%d')
+def extract_customer(**context):
+    last_update = datetime.strftime(context['last_update'], format='%Y-%m-%d')
     db_instance = DB_Airflow(conn_id='prod_pg', database='postgres')
 
     # Extraction
     try:
         logging.info('Extracting customer dimension')
         dim_customer = extract_dim_customer(db_object=db_instance)
+        dim_customer['inserted_at'] = context['ti'].xcom_pull('start_exec_time')
         dim_customer.set_index('customer_key').to_csv(os.path.join('data', f'dim_customer.csv'))
         return True
     except TimeoutError as timeout_err:
@@ -62,13 +64,14 @@ def extract_customer(last_update=datetime.today()):
     except Exception as error:
         logging.error(error)
 
-def extract_product(last_update=datetime.today()):
-    last_update = datetime.strftime(last_update, format='%Y-%m-%d')
+def extract_product(**context):
+    last_update = datetime.strftime(context['last_update'], format='%Y-%m-%d')
     db_instance = DB_Airflow(conn_id='prod_pg', database='postgres')
 
     # Extraction
     try:
         dim_product = extract_dim_product(db_object=db_instance)
+        dim_product['inserted_at'] = context['ti'].xcom_pull('start_exec_time')
         dim_product.set_index('product_key').to_csv(os.path.join('data', f'dim_product.csv'))
         return True
     except TimeoutError as timeout_err:
@@ -148,14 +151,26 @@ def generate_fact_marketing(last_update=datetime.today()):
     except Exception as error:
         logging.error(error)
 
+def get_execution_time(**context):
+    dtime = datetime.now(tz=local_tz)
+    context['ti'].xcom_push(key='start_exec_time', value=dtime)
+
+    return dtime
+
 with DAG(
     dag_id='db_extraction',
     schedule='@weekly',
     start_date=datetime(year=2024, month=9, day=9, tzinfo=local_tz),
 ) as dag:
+    import pandas as pd
+
     info_log_start = BashOperator(
         task_id='starting_log',
         bash_command=f'echo "Starting data extraction from DB production";'
+    )
+    get_exec_time = PythonOperator(
+        task_id='start_exec_time',
+        python_callable=get_execution_time
     )
 
     # Fetching all dimension
@@ -166,17 +181,20 @@ with DAG(
 
     fetch_location_dim = PythonOperator(
         task_id='extract_location',
-        python_callable=extract_location
+        python_callable=extract_location,
+        op_kwargs={'last_update': datetime(year=2000, month=1, day=1)}
     )
 
     fetch_customer_dim = PythonOperator(
         task_id='extract_customer',
-        python_callable=extract_customer
+        python_callable=extract_customer,
+        op_kwargs={'last_update': datetime(year=2000, month=1, day=1)}
     )
 
     fetch_product_dim = PythonOperator(
         task_id='extract_product',
-        python_callable=extract_product
+        python_callable=extract_product,
+        op_kwargs={'last_update': datetime(year=2000, month=1, day=1)}
     )
     
     # Transformation start
@@ -214,5 +232,5 @@ with DAG(
         bash_command=f'echo "Data extraction completed.";'
     )
 
-    info_log_start >> [fetch_time_dim, fetch_location_dim, fetch_product_dim, fetch_customer_dim] >> transform_fact_sales
+    info_log_start >> get_exec_time >> [fetch_time_dim, fetch_location_dim, fetch_product_dim, fetch_customer_dim] >> transform_fact_sales
     transform_fact_sales >> check_sales_file >> transform_fact_marketing >> check_marketing_file >> info_log_end
